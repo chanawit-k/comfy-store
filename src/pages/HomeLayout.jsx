@@ -2,7 +2,7 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 const HomeLayout = () => {
   return (
-    <div>
+    <div className="align-element">
       home page
       <Outlet />
     </div>
