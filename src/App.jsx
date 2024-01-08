@@ -30,7 +30,7 @@ function App() {
           errorElement: <ErrorElement />,
         },
         {
-          path: 'landing/:id',
+          path: 'products/:id',
           loader: singlePageLoader,
           element: <SingleProduct />,
         },
