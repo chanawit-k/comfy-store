@@ -2,13 +2,31 @@ import { BsCart3, BsMoonFill, BsSunFill } from 'react-icons/bs'
 import { FaBarsStaggered } from 'react-icons/fa6'
 import { NavLink } from 'react-router-dom'
 import NavLinks from './NavLinks'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+
+const themes = {
+  light: 'light',
+  dark: 'dark',
+}
+
+const getThemeFromLocalStorage = () => {
+  return localStorage.getItem('theme') || themes.dark
+}
+
 const Navbar = () => {
-  const [theme, setTheme] = useState(false)
+  const [theme, setTheme] = useState(getThemeFromLocalStorage())
 
   const handleTheme = () => {
-    setTheme(!theme)
+    const { dark, light } = themes
+    const newTheme = theme === dark ? light : dark
+    setTheme(newTheme)
   }
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
   return (
     <nav className="bg-base-200">
       <div className="navbar align-element">
