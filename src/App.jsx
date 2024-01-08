@@ -12,6 +12,8 @@ import {
   Landing,
   SingleProduct,
 } from './pages'
+import { ErrorElement } from './components'
+import { loader as landingLoader } from './pages/Landing'
 
 function App() {
   const router = createBrowserRouter([
@@ -24,9 +26,10 @@ function App() {
           index: true,
           path: 'landing',
           element: <Landing />,
+          loader: landingLoader,
+          errorElement: <ErrorElement />,
         },
         {
-          index: true,
           path: 'landing/:id',
           element: <SingleProduct />,
         },
