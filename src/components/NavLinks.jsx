@@ -9,18 +9,20 @@ const links = [
   { id: 6, url: 'orders', text: 'orders' },
 ]
 const NavLinks = () => {
-  ;<>
-    {links.map((link) => {
-      const { id, url, text } = link
-      return (
-        <li key={id}>
-          <NavLink className="capitalize" to={url}>
-            {text}
-          </NavLink>
-        </li>
-      )
-    })}
-  </>
+  return (
+    <>
+      {links.map((link) => {
+        const { id, url, text } = link
+        return (
+          <li key={id}>
+            <NavLink className="capitalize" to={url}>
+              {text}
+            </NavLink>
+          </li>
+        )
+      })}
+    </>
+  )
 }
 
 export default NavLinks
