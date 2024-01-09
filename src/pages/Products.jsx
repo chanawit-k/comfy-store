@@ -1,5 +1,6 @@
 import React from 'react'
 import { customFetch } from '../utils'
+import { Filters, ProductsContainer } from '../components'
 const url = 'products'
 export const loader = async () => {
   const response = await customFetch(url)
@@ -8,7 +9,12 @@ export const loader = async () => {
 }
 
 const Products = () => {
-  return <div>Products</div>
+  return (
+    <>
+      <Filters />
+      <ProductsContainer />
+    </>
+  )
 }
 
 export default Products
