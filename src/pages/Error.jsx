@@ -2,6 +2,7 @@ import React from 'react'
 import { useRouteError, Link } from 'react-router-dom'
 const Error = () => {
   const error = useRouteError()
+  console.log(error)
   if (error.status === 404) {
     return (
       <div class="hero min-h-screen bg-base-200">
