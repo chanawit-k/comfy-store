@@ -3,7 +3,7 @@ import { customFetch, formatPrice, generateAmountOptions } from '../utils'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { addItem, clearCart } from '../features/cart/cartSlice'
+import { addItem, removeItem } from '../features/cart/cartSlice'
 
 export const loader = async ({ params }) => {
   const response = await customFetch(`/products/${params.id}`)
@@ -35,8 +35,7 @@ const SingleProduct = () => {
   }
 
   const addToCart = () => {
-    dispatch(clearCart({ product: cartProduct }))
-    //dispatch(addItem({ product: cartProduct }))
+    dispatch(addItem({ product: cartProduct }))
   }
 
   return (
