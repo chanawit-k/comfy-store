@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 const defaultState = {
   cartItems: [],
   numItemsInCart: 1,
-  carTotal: 1,
+  carTotal: 5,
   shipping: 500,
   tax: 1,
   orderTotal: 1,
@@ -34,7 +34,8 @@ const cartSlice = createSlice({
       toast.success('Item added to cart')
     },
     clearCart: (state) => {
-      state.cartItems = []
+      localStorage.setItem('cart', JSON.stringify(defaultState))
+      return defaultState
     },
     removeItem: (state, { payload }) => {
       console.log('remove Item')
