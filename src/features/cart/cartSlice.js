@@ -38,11 +38,10 @@ const cartSlice = createSlice({
       return defaultState
     },
     removeItem: (state, action) => {
-      const { product } = action.payload
-      const item = state.cartItems.find((i) => i.cartID === product.cartID)
-      state.cartItems = state.cartItems.filter(
-        (i) => i.cartID !== product.cartID
-      )
+      const { cartID } = action.payload
+      console.log(cartID)
+      const item = state.cartItems.find((i) => i.cartID === cartID)
+      state.cartItems = state.cartItems.filter((i) => i.cartID !== cartID)
 
       state.numItemsInCart -= item.amount
       state.cartTotal -= item.price * item.amount
