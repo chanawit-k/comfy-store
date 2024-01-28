@@ -3,30 +3,20 @@ import { FaBarsStaggered } from 'react-icons/fa6'
 import { NavLink } from 'react-router-dom'
 import NavLinks from './NavLinks'
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-
-const themes = {
-  light: 'light',
-  dark: 'dark',
-}
+import { useSelector, useDispatch } from 'react-redux'
+import { toggleTheme } from '../features/user/userSlice'
 
 const getThemeFromLocalStorage = () => {
   return localStorage.getItem('theme') || themes.dark
 }
 
 const Navbar = () => {
-  const [theme, setTheme] = useState(getThemeFromLocalStorage())
-  const { numItemsInCart } = useSelector((store) => store.cart)
-  const handleTheme = () => {
-    const { dark, light } = themes
-    const newTheme = theme === dark ? light : dark
-    setTheme(newTheme)
-  }
+  const dispatch = useDispatch()
+  const numItemsInCart = useSelector((state) => state.cart.numItemsInCart)
 
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme)
-    localStorage.setItem('theme', theme)
-  }, [theme])
+  const handleTheme = () => {
+    dispatch(toggleTheme())
+  }
 
   return (
     <nav className="bg-base-200">
