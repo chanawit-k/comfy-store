@@ -16,6 +16,7 @@ import { ErrorElement } from './components'
 import { loader as landingLoader } from './pages/Landing'
 import { loader as singlePageLoader } from './pages/SingleProduct'
 import { loader as productLoader } from './pages/Products'
+import { action as registerAction } from './pages/Register'
 function App() {
   const router = createBrowserRouter([
     {
@@ -67,6 +68,7 @@ function App() {
       path: '/register',
       element: <Register />,
       errorElement: <Error />,
+      action: registerAction,
     },
   ])
   return <RouterProvider router={router} />
