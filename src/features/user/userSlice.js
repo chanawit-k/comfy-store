@@ -9,17 +9,20 @@ const getThemeFromLocalStorage = () => {
   return localStorage.getItem('theme') || themes.dark
 }
 
-const defaultState = {
-  user: { username: 'coding addict' },
+const getUserFromLocalStorage = () => {
+  return JSON.parse(localStorage.getItem('user')) || null
+}
+
+const initialState = {
+  user: getUserFromLocalStorage(),
   theme: getThemeFromLocalStorage(),
 }
 
 const userSlice = createSlice({
   name: 'user',
-  initialState: defaultState,
+  initialState,
   reducers: {
     loginUser: (state, action) => {
-      debugger
       const user = { ...action.payload.user, token: action.payload.jwt }
       state.user = user
       localStorage.setItem('user', JSON.stringify(user))
