@@ -41,7 +41,9 @@ export const action =
         error?.response?.data?.error?.message ||
         'please double check your credentials'
       toast.error(errorMessage)
-      return redirect('/orders')
+      if (error?.response?.status === 401 || 403) {
+        return redirect('/login')
+      }
     }
   }
 
