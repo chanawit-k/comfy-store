@@ -44,6 +44,7 @@ export const action =
       if (error?.response?.status === 401 || 403) {
         return redirect('/login')
       }
+      return null
     }
   }
 
